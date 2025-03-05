@@ -127,6 +127,8 @@ class DropZone(QLabel):
 
             # Chuyển đổi file dựa vào định dạng
             if file_ext in ['.pptx', '.ppt']:
+                self.setText('Đang xử lý...\nVui lòng đợi trong giây lát')
+                QApplication.processEvents()  # Cập nhật UI ngay lập tức
                 success = convert_pptx_to_pdf(file_path, output_path)
             elif file_ext in ['.docx', '.doc']:
                 success = convert_word_to_pdf(file_path, output_path)
